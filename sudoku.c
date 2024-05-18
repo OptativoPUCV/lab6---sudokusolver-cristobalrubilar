@@ -43,7 +43,7 @@ void print_node(Node *n) {
 }
 
 int is_valid(Node *n) {
-  int filas, columnas, submatrices;
+  int filas, columnas;
   for (filas = 0; filas < 10; filas++) {
     for (columnas = 0; columnas < 10; columnas++) {
       int nuevaFila = filas++;
