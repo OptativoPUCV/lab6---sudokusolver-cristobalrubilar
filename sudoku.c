@@ -117,22 +117,38 @@ List *get_adj_nodes(Node *n) {
   return list;
 }
 
-
 int is_final(Node *n) {
   int filas, columnas;
-  for (filas = 0; filas < 9; filas++)
-    {
-      for (columnas = 0; columnas < 9; columnas++)
-        {
-          if (n->sudo[filas][columnas] == 0)
-          {
-            return 0;
-          }
-        }
+  for (filas = 0; filas < 9; filas++) {
+    for (columnas = 0; columnas < 9; columnas++) {
+      if (n->sudo[filas][columnas] == 0) {
+        return 0;
+      }
     }
-  return 1; }
+  }
+  return 1;
+}
 
-Node *DFS(Node *initial, int *cont) { return NULL; }
+Node *DFS(Node *initial, int *cont) {
+
+  Stack *S = createStack();
+  push(S, initial);
+  while (get_size(S) != 0) {
+    Node *n = top(S);
+    if (is_final(n)) {
+      return n;
+    }
+    List *list = get_adj_nodes(n);
+    Node *aux = first(list);
+    while (aux != NULL) {
+      push(S, aux);
+      aux = next(list);
+    }
+    free(n);
+  }
+
+  return NULL;
+}
 
 /*
 int main( int argc, char *argv[] ){
