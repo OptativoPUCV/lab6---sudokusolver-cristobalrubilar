@@ -42,31 +42,18 @@ void print_node(Node *n) {
   printf("\n");
 }
 
-int is_valid(Node *n) { 
-  int i, j, k;
-  int *arr = (int *)malloc(sizeof(int) * 10);
-  for (i = 0; i < 9; i++)
-    {
-      for (j = 0; j < 9; j++)
-        {
-          if (n->sudo[i][j] != 0)
-          {
-            for (k = 0 ; k < 10 ; k++)
-              {
-                arr[k] = 0;
-                
-              }
-            for (k = 0 ; k < 9 ; k++)
-              {
-                if (n->sudo[i][k] != 0)
-                {
-                  arr[n->sudo[i][k]]++;
-                }
-              }
-          }
-        }
+int is_valid(Node *n) {
+  int filas, columnas, submatrices;
+  for (filas = 0; filas < 10; filas++) {
+    for (columnas = 0; columnas < 10; columnas++) {
+      int nuevaFila = filas++;
+      if (n->sudo[filas] == n->sudo[nuevaFila]) {
+        return 0;
+      }
     }
-  return 1; 
+  }
+
+  return 1;
 }
 
 List *get_adj_nodes(Node *n) {

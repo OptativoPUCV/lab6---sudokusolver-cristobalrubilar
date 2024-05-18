@@ -42,3 +42,14 @@ Sat 18 May 2024 03:44:25 PM UTC:
  tests:  0|5
 total_score: 0/70
 07244f7
+Sat 18 May 2024 03:53:11 PM UTC: 
+ sudoku.c | 26 ++++++--------------------
+ 1 file changed, 6 insertions(+), 20 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘is_valid’:
+sudoku.c:46:24: error: unused variable ‘submatrices’ [-Werror=unused-variable]
+   46 |   int filas, columnas, submatrices;
+      |                        ^~~~~~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+951bda2
