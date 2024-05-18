@@ -1,4 +1,5 @@
 #include "list.h"
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -44,15 +45,55 @@ void print_node(Node *n) {
 
 int is_valid(Node *n) {
   int filas, columnas;
-  for (filas = 0; filas < 10; filas++) {
-    for (columnas = 0; columnas < 10; columnas++) {
-      int nuevaFila = filas++;
-      if (n->sudo[filas] == n->sudo[nuevaFila]) {
-        return 0;
+  for (filas = 0; filas < 9; filas++) {
+    bool estaNum[9] = {false};
+    for (columnas = 0; columnas < 9; columnas++) {
+      int num = n->sudo[filas][columnas];
+      if (num != 0)
+      {
+        if (estaNum[num - 1])
+        {
+          return 0;
+        }
+        estaNum[num - 1] = true;
       }
-      else if (n->sudo[filas] == 0 || n->sudo[nuevaFila] == 0)
-        continue;
     }
+  }
+
+  for (columnas = 0; columnas < 9; columnas++) {
+    bool estaNum[9] = {false};
+    for (filas = 0; filas < 9; filas++) {
+      int num = n->sudo[filas][columnas];
+      if (num != 0)
+      {
+        if (estaNum[num - 1])
+        {
+          return 0;
+        }
+        estaNum[num - 1] = true;
+      }
+    }
+  }
+
+  for(int comienzoFil = 0; comienzoFil < 9; comienzoFil += 3){
+    for(int comienzoCol = 0; comienzoCol < 9; comienzoCol += 3){
+      bool estaNum[9] = {false};
+      for(int i = 0 ; i <3; i++)
+        {
+          for(int j = 0; j < 3; j++)
+            {
+              int num = n->sudo[comienzoFil + i][comienzoCol + j];
+              if(num != 0)
+              {
+                if(estaNum[num - 1])
+                {
+                  return 0;
+                }
+                estaNum[num - 1] = true;
+              }
+            }
+        }
+  }
   }
 
   return 1;
