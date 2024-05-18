@@ -2,3 +2,26 @@ Sat 18 May 2024 03:39:04 PM UTC:
  tests:  0|5
 total_score: 0/70
 211a860
+Sat 18 May 2024 03:43:42 PM UTC: 
+ sudoku.c | 38 ++++++++++++++++++++++++++------------
+ 1 file changed, 26 insertions(+), 12 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘is_valid’:
+sudoku.c:63:36: error: expected ‘]’ before ‘;’ token
+   63 |                   arr[n->sudo[i][k];
+      |                                    ^
+      |                                    ]
+sudoku.c:63:22: error: statement with no effect [-Werror=unused-value]
+   63 |                   arr[n->sudo[i][k];
+      |                   ~~~^~~~~~~~~~~~~~~
+   64 |                 }
+      |                 ~     
+sudoku.c:63:37: error: expected ‘;’ before ‘}’ token
+   63 |                   arr[n->sudo[i][k];
+      |                                     ^
+      |                                     ;
+   64 |                 }
+      |                 ~                    
+cc1: all warnings being treated as errors
+Compilation failed
+083d3f5
