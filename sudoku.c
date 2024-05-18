@@ -147,7 +147,7 @@ Node *DFS(Node *initial, int *cont) {
       List *list = get_adj_nodes(n);
       // Iniciar un bucle para explorar los nodos adyacentes
       Node *aux = first(list);
-      while (aux != NULL) {
+      while (aux) {
         // Agregar el nodo adyacente a la pila para exploración futura
         push(S, aux);
         // Obtener el siguiente nodo adyacente
