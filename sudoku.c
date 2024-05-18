@@ -103,7 +103,9 @@ List *get_adj_nodes(Node *n) {
           if (!estaNum[i]) {
             Node *adj = copy(n);
             adj->sudo[filas][columnas] = i + 1;
-            pushBack(list, adj);
+            if(is_valid(adj)){
+              pushBack(list, adj);
+            }
           }
         }
       }
