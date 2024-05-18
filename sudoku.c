@@ -49,10 +49,8 @@ int is_valid(Node *n) {
     bool estaNum[9] = {false};
     for (columnas = 0; columnas < 9; columnas++) {
       int num = n->sudo[filas][columnas];
-      if (num != 0)
-      {
-        if (estaNum[num - 1])
-        {
+      if (num != 0) {
+        if (estaNum[num - 1]) {
           return 0;
         }
         estaNum[num - 1] = true;
@@ -64,10 +62,8 @@ int is_valid(Node *n) {
     bool estaNum[9] = {false};
     for (filas = 0; filas < 9; filas++) {
       int num = n->sudo[filas][columnas];
-      if (num != 0)
-      {
-        if (estaNum[num - 1])
-        {
+      if (num != 0) {
+        if (estaNum[num - 1]) {
           return 0;
         }
         estaNum[num - 1] = true;
@@ -75,25 +71,21 @@ int is_valid(Node *n) {
     }
   }
 
-  for(int comienzoFil = 0; comienzoFil < 9; comienzoFil += 3){
-    for(int comienzoCol = 0; comienzoCol < 9; comienzoCol += 3){
+  for (int comienzoFil = 0; comienzoFil < 9; comienzoFil += 3) {
+    for (int comienzoCol = 0; comienzoCol < 9; comienzoCol += 3) {
       bool estaNum[9] = {false};
-      for(int i = 0 ; i <3; i++)
-        {
-          for(int j = 0; j < 3; j++)
-            {
-              int num = n->sudo[comienzoFil + i][comienzoCol + j];
-              if(num != 0)
-              {
-                if(estaNum[num - 1])
-                {
-                  return 0;
-                }
-                estaNum[num - 1] = true;
-              }
+      for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+          int num = n->sudo[comienzoFil + i][comienzoCol + j];
+          if (num != 0) {
+            if (estaNum[num - 1]) {
+              return 0;
             }
+            estaNum[num - 1] = true;
+          }
         }
-  }
+      }
+    }
   }
 
   return 1;
@@ -101,6 +93,28 @@ int is_valid(Node *n) {
 
 List *get_adj_nodes(Node *n) {
   List *list = createList();
+  int filas , columnas;
+  for (filas = 0; filas < 9; filas++)
+  {    
+    bool estaNum[9] = {false};
+    for (columnas = 0 ; columnas < 9; columnas++)
+      {
+        int numero =  n->sudo[filas][columnas];
+        if (numero == 0)
+        {
+          for (int i = 0; i < 9; i++)
+            {
+              if (!estaNum[i])
+              {
+                Node *adj = copy(n);
+                adj->sudo[filas][columnas] = i + 1;
+                pushBack(list, adj);
+              }
+              
+            }
+        }
+      }
+  }
 
   return list;
 }
