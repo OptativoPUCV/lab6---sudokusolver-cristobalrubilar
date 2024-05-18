@@ -105,7 +105,7 @@ List *get_adj_nodes(Node *n) {
             adj->sudo[filas][columnas] = i + 1;
             if (is_valid(adj)) {
               pushBack(list, adj);
-              return list;
+              break;
             } else {
               free(adj);
             }
