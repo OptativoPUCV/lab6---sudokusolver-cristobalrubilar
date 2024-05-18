@@ -101,12 +101,16 @@ List *get_adj_nodes(Node *n) {
       if (numero == 0) {
         for (int i = 0; i < 9; i++) {
           if (!estaNum[i]) {
-            Node *adj = copy(n);
-            adj->sudo[filas][columnas] = i + 1;
-            if (is_valid(adj)) {
-              pushBack(list, adj);
-            } else {
-              free(adj);
+            for (int j = 0; j < 9; j++) {
+              if (!estaNum[j]) {
+                Node *adj = copy(n);
+                adj->sudo[filas][columnas] = i + 1;
+                if (is_valid(adj)) {
+                  pushBack(list, adj);
+                } else {
+                  free(adj);
+                }
+              }
             }
           }
         }
