@@ -60,7 +60,7 @@ int is_valid(Node *n) {
               {
                 if (n->sudo[i][k] != 0)
                 {
-                  arr[n->sudo[i][k];
+                  arr[n->sudo[i][k]];
                 }
               }
           }

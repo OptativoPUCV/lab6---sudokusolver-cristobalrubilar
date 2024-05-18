@@ -25,3 +25,14 @@ sudoku.c:63:37: error: expected ‘;’ before ‘}’ token
 cc1: all warnings being treated as errors
 Compilation failed
 083d3f5
+Sat 18 May 2024 03:43:52 PM UTC: 
+ sudoku.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:5:
+sudoku.c: In function ‘is_valid’:
+sudoku.c:63:22: error: statement with no effect [-Werror=unused-value]
+   63 |                   arr[n->sudo[i][k]];
+      |                   ~~~^~~~~~~~~~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+90a0ec4
