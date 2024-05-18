@@ -50,6 +50,8 @@ int is_valid(Node *n) {
       if (n->sudo[filas] == n->sudo[nuevaFila]) {
         return 0;
       }
+      else if (n->sudo[filas] == 0 || n->sudo[nuevaFila] == 0)
+        continue;
     }
   }
 
