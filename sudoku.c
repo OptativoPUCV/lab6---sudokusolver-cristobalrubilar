@@ -130,10 +130,37 @@ int is_final(Node *n) {
 }
 
 Node *DFS(Node *initial, int *cont) {
+    // Crear una pila para almacenar los nodos a explorar
+    Stack *S = createStack();
+    // Agregar el nodo inicial a la pila
+    push(S, initial);
 
+    // Mientras la pila no esté vacía
+    while (get_size(S) != 0) {
+      // Obtener el nodo en la parte superior de la pila
+      Node *n = top(S);
+      // Si el nodo actual es el nodo final, retornarlo
+      if (is_final(n)) {
+        return n;
+      }
+      // Obtener la lista de nodos adyacentes al nodo actual
+      List *list = get_adj_nodes(n);
+      // Iniciar un bucle para explorar los nodos adyacentes
+      Node *aux = first(list);
+      while (aux != NULL) {
+        // Agregar el nodo adyacente a la pila para exploración futura
+        push(S, aux);
+        // Obtener el siguiente nodo adyacente
+        aux = next(list);
+      }
+      // Liberar la memoria del nodo actual, ya que no es el nodo final
+      free(n);
+    }
 
-  return NULL;
-}
+    // Si no se encuentra el nodo final, retornar NULL
+    return NULL;
+  }
+
 
 /*
 int main( int argc, char *argv[] ){
